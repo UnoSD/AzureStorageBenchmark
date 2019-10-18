@@ -62,7 +62,7 @@ namespace StorageBenchmark
     {
         public const string ContainerName = "perftest";
         public const int RandomDataSizeBytes = 1_073_741_824;
-        public const int BlockCount = 2_048;
+        public const int BlockCount = 128;
         public const int BenchmarkProcessRunCount = 2;
         public const int BenchmarkTestRunCount = -1;
         public const int BenchmarkWarmupCount = 1;

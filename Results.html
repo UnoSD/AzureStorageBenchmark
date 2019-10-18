@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
 <meta charset='utf-8' />
-<title>StorageBenchmark.StorageWriteTest-20191010-083412</title>
+<title>StorageBenchmark.StorageWriteTest-20191018-054047</title>
 
 <style type="text/css">
 	table { border-collapse: collapse; display: block; width: 100%; overflow: auto; }
@@ -17,30 +17,30 @@ BenchmarkDotNet=v0.11.5, OS=ubuntu 18.04
 Intel Xeon CPU E5-2673 v3 2.40GHz, 2 CPU, 20 logical and 20 physical cores
 .NET Core SDK=3.0.100
   [Host]     : .NET Core 3.0.0 (CoreCLR 4.700.19.46205, CoreFX 4.700.19.46214), 64bit RyuJIT
-  Job-QRLGJJ : .NET Core 3.0.0 (CoreCLR 4.700.19.46205, CoreFX 4.700.19.46214), 64bit RyuJIT
+  Job-AZBPPI : .NET Core 3.0.0 (CoreCLR 4.700.19.46205, CoreFX 4.700.19.46214), 64bit RyuJIT
 </code></pre>
-<pre><code>LaunchCount=2  RunStrategy=Monitoring  WarmupCount=1  
+<pre><code>IterationCount=1  LaunchCount=1  RunStrategy=Monitoring  
+WarmupCount=0  
 </code></pre>
 
 <table>
-<thead><tr><th>             Method</th><th>concurrency</th><th> Mean</th><th>Error</th><th>StdDev</th><th>  Max</th><th>  Min</th><th>Rank</th>
+<thead><tr><th>             Method</th><th>Concurrency</th><th> Mean</th><th>Error</th><th>Rank</th><th>Mean speed</th><th>Median speed</th><th>Min speed</th><th>Max speed</th>
 </tr>
-</thead><tbody><tr><td>AdlsBlockBlobUpload</td><td>1</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>?</td>
-</tr><tr><td>AdlsBlockBlobUpload</td><td>54</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>NA</td><td>?</td>
-</tr><tr><td>PremiumBlockBlobPutBlock</td><td>?</td><td>847.7 ms</td><td>136.25 ms</td><td>156.90 ms</td><td>1,367.9 ms</td><td>706.0 ms</td><td>1</td>
-</tr><tr><td>PremiumBlockBlobUpload</td><td>54</td><td>2,847.0 ms</td><td>33.36 ms</td><td>38.42 ms</td><td>2,904.5 ms</td><td>2,780.4 ms</td><td>2</td>
-</tr><tr><td>PremiumBlockBlobUpload</td><td>11</td><td>2,847.6 ms</td><td>92.05 ms</td><td>106.00 ms</td><td>3,037.1 ms</td><td>2,600.2 ms</td><td>2</td>
-</tr><tr><td>AdlsBlockBlobUpload</td><td>11</td><td>5,552.3 ms</td><td>1,242.25 ms</td><td>1,430.58 ms</td><td>9,686.5 ms</td><td>4,425.1 ms</td><td>3</td>
-</tr><tr><td>SmbFileWrite</td><td>?</td><td>9,014.4 ms</td><td>412.77 ms</td><td>475.34 ms</td><td>10,097.8 ms</td><td>8,327.8 ms</td><td>4</td>
-</tr><tr><td>StandardBlockBlobUpload</td><td>54</td><td>9,920.3 ms</td><td>3,943.36 ms</td><td>4,541.18 ms</td><td>28,043.3 ms</td><td>6,640.4 ms</td><td>4</td>
-</tr><tr><td>AdlsBlockBlobPutBlock</td><td>?</td><td>10,521.4 ms</td><td>2,912.01 ms</td><td>3,353.47 ms</td><td>15,859.1 ms</td><td>4,218.8 ms</td><td>4</td>
-</tr><tr><td>StandardBlockBlobUpload</td><td>11</td><td>11,179.1 ms</td><td>2,569.15 ms</td><td>2,958.64 ms</td><td>19,721.5 ms</td><td>7,886.1 ms</td><td>4</td>
-</tr><tr><td>StandardBlockBlobPutBlock</td><td>?</td><td>12,812.5 ms</td><td>4,687.36 ms</td><td>5,397.97 ms</td><td>32,716.2 ms</td><td>6,422.6 ms</td><td>4</td>
-</tr><tr><td>PremiumBlockBlobUpload</td><td>1</td><td>18,006.4 ms</td><td>616.58 ms</td><td>407.83 ms</td><td>18,864.7 ms</td><td>17,480.8 ms</td><td>5</td>
-</tr><tr><td>PremiumPageBlobUpload</td><td>1</td><td>23,248.4 ms</td><td>968.12 ms</td><td>640.35 ms</td><td>25,035.3 ms</td><td>22,867.3 ms</td><td>6</td>
-</tr><tr><td>StandardBlockBlobUpload</td><td>1</td><td>29,117.4 ms</td><td>3,191.81 ms</td><td>3,675.69 ms</td><td>42,567.2 ms</td><td>25,427.9 ms</td><td>7</td>
-</tr><tr><td>PremiumPageBlobUpload</td><td>54</td><td>29,405.8 ms</td><td>711.11 ms</td><td>818.92 ms</td><td>31,537.0 ms</td><td>28,300.6 ms</td><td>7</td>
-</tr><tr><td>PremiumPageBlobUpload</td><td>11</td><td>31,246.2 ms</td><td>2,260.72 ms</td><td>2,603.45 ms</td><td>33,924.2 ms</td><td>21,759.5 ms</td><td>8</td>
+</thead><tbody><tr><td>PremiumBlockBlobPutBlock</td><td>?</td><td>478.8 ms</td><td>NA</td><td>1</td><td>2.2424 GBps</td><td>2.2424 GBps</td><td>2.2424 GBps</td><td>2.2424 GBps</td>
+</tr><tr><td>AdlsBlockBlobPutBlock</td><td>1</td><td>554.0 ms</td><td>NA</td><td>2</td><td>1.9380 GBps</td><td>1.9380 GBps</td><td>1.9380 GBps</td><td>1.9380 GBps</td>
+</tr><tr><td>StandardBlockBlobPutBlock</td><td>1</td><td>1,149.8 ms</td><td>NA</td><td>3</td><td>0.9338 GBps</td><td>0.9338 GBps</td><td>0.9338 GBps</td><td>0.9338 GBps</td>
+</tr><tr><td>PremiumBlockBlobUpload</td><td>54</td><td>2,500.1 ms</td><td>NA</td><td>4</td><td>0.4295 GBps</td><td>0.4295 GBps</td><td>0.4295 GBps</td><td>0.4295 GBps</td>
+</tr><tr><td>PremiumBlockBlobUpload</td><td>11</td><td>2,576.8 ms</td><td>NA</td><td>5</td><td>0.4167 GBps</td><td>0.4167 GBps</td><td>0.4167 GBps</td><td>0.4167 GBps</td>
+</tr><tr><td>AdlsBlockBlobUpload</td><td>54</td><td>2,924.8 ms</td><td>NA</td><td>6</td><td>0.3671 GBps</td><td>0.3671 GBps</td><td>0.3671 GBps</td><td>0.3671 GBps</td>
+</tr><tr><td>AdlsBlockBlobUpload</td><td>11</td><td>3,693.3 ms</td><td>NA</td><td>7</td><td>0.2907 GBps</td><td>0.2907 GBps</td><td>0.2907 GBps</td><td>0.2907 GBps</td>
+</tr><tr><td>StandardBlockBlobUpload</td><td>54</td><td>8,529.4 ms</td><td>NA</td><td>8</td><td>0.1259 GBps</td><td>0.1259 GBps</td><td>0.1259 GBps</td><td>0.1259 GBps</td>
+</tr><tr><td>StandardBlockBlobUpload</td><td>11</td><td>8,587.1 ms</td><td>NA</td><td>8</td><td>0.1250 GBps</td><td>0.1250 GBps</td><td>0.1250 GBps</td><td>0.1250 GBps</td>
+</tr><tr><td>PremiumBlockBlobUpload</td><td>1</td><td>17,335.2 ms</td><td>NA</td><td>9</td><td>0.0619 GBps</td><td>0.0619 GBps</td><td>0.0619 GBps</td><td>0.0619 GBps</td>
+</tr><tr><td>AdlsBlockBlobUpload</td><td>1</td><td>21,475.0 ms</td><td>NA</td><td>10</td><td>0.0500 GBps</td><td>0.0500 GBps</td><td>0.0500 GBps</td><td>0.0500 GBps</td>
+</tr><tr><td>PremiumPageBlobUpload</td><td>1</td><td>23,787.8 ms</td><td>NA</td><td>11</td><td>0.0451 GBps</td><td>0.0451 GBps</td><td>0.0451 GBps</td><td>0.0451 GBps</td>
+</tr><tr><td>StandardBlockBlobUpload</td><td>1</td><td>24,282.3 ms</td><td>NA</td><td>12</td><td>0.0442 GBps</td><td>0.0442 GBps</td><td>0.0442 GBps</td><td>0.0442 GBps</td>
+</tr><tr><td>PremiumPageBlobUpload</td><td>54</td><td>28,484.4 ms</td><td>NA</td><td>13</td><td>0.0377 GBps</td><td>0.0377 GBps</td><td>0.0377 GBps</td><td>0.0377 GBps</td>
+</tr><tr><td>PremiumPageBlobUpload</td><td>11</td><td>30,414.6 ms</td><td>NA</td><td>14</td><td>0.0353 GBps</td><td>0.0353 GBps</td><td>0.0353 GBps</td><td>0.0353 GBps</td>
 </tr></tbody></table>
 </body>
 </html>

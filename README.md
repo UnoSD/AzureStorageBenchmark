@@ -8,7 +8,7 @@ Premium blob storage with page blobs (StorageV2)
 
 ADLS Gen2 with preview blob API (StorageV2 standard)
 
-File size: 1GB total, 2048 blocks of 524KB (over 256KB to hit HTBB)
+File size: 1GB total, 128 blocks of 8388608 byes (8MB to be over 4MB to hit HTBB)
 
 SMB machine:
 	DS4 v2
@@ -24,21 +24,32 @@ Replace tokens with connections data in Program.cs, install dotnet-sdk, copy the
 
 # Results
 
-|                    Method | concurrency |        Mean |       Error |      StdDev |         Max |         Min | Rank |
-|-------------------------- |------------ |------------:|------------:|------------:|------------:|------------:|-----:|
-|       AdlsBlockBlobUpload |           1 |          NA |          NA |          NA |          NA |          NA |    ? |
-|       AdlsBlockBlobUpload |          54 |          NA |          NA |          NA |          NA |          NA |    ? |
-|  PremiumBlockBlobPutBlock |           ? |    847.7 ms |   136.25 ms |   156.90 ms |  1,367.9 ms |    706.0 ms |    1 |
-|    PremiumBlockBlobUpload |          54 |  2,847.0 ms |    33.36 ms |    38.42 ms |  2,904.5 ms |  2,780.4 ms |    2 |
-|    PremiumBlockBlobUpload |          11 |  2,847.6 ms |    92.05 ms |   106.00 ms |  3,037.1 ms |  2,600.2 ms |    2 |
-|       AdlsBlockBlobUpload |          11 |  5,552.3 ms | 1,242.25 ms | 1,430.58 ms |  9,686.5 ms |  4,425.1 ms |    3 |
-|              SmbFileWrite |           ? |  9,014.4 ms |   412.77 ms |   475.34 ms | 10,097.8 ms |  8,327.8 ms |    4 |
-|   StandardBlockBlobUpload |          54 |  9,920.3 ms | 3,943.36 ms | 4,541.18 ms | 28,043.3 ms |  6,640.4 ms |    4 |
-|     AdlsBlockBlobPutBlock |           ? | 10,521.4 ms | 2,912.01 ms | 3,353.47 ms | 15,859.1 ms |  4,218.8 ms |    4 |
-|   StandardBlockBlobUpload |          11 | 11,179.1 ms | 2,569.15 ms | 2,958.64 ms | 19,721.5 ms |  7,886.1 ms |    4 |
-| StandardBlockBlobPutBlock |           ? | 12,812.5 ms | 4,687.36 ms | 5,397.97 ms | 32,716.2 ms |  6,422.6 ms |    4 |
-|    PremiumBlockBlobUpload |           1 | 18,006.4 ms |   616.58 ms |   407.83 ms | 18,864.7 ms | 17,480.8 ms |    5 |
-|     PremiumPageBlobUpload |           1 | 23,248.4 ms |   968.12 ms |   640.35 ms | 25,035.3 ms | 22,867.3 ms |    6 |
-|   StandardBlockBlobUpload |           1 | 29,117.4 ms | 3,191.81 ms | 3,675.69 ms | 42,567.2 ms | 25,427.9 ms |    7 |
-|     PremiumPageBlobUpload |          54 | 29,405.8 ms |   711.11 ms |   818.92 ms | 31,537.0 ms | 28,300.6 ms |    7 |
-|     PremiumPageBlobUpload |          11 | 31,246.2 ms | 2,260.72 ms | 2,603.45 ms | 33,924.2 ms | 21,759.5 ms |    8 |
+``` ini
+
+BenchmarkDotNet=v0.11.5, OS=ubuntu 18.04
+Intel Xeon CPU E5-2673 v3 2.40GHz, 2 CPU, 20 logical and 20 physical cores
+.NET Core SDK=3.0.100
+  [Host]     : .NET Core 3.0.0 (CoreCLR 4.700.19.46205, CoreFX 4.700.19.46214), 64bit RyuJIT
+  Job-AZBPPI : .NET Core 3.0.0 (CoreCLR 4.700.19.46205, CoreFX 4.700.19.46214), 64bit RyuJIT
+
+IterationCount=1  LaunchCount=1  RunStrategy=Monitoring  
+WarmupCount=0  
+
+```
+|                    Method | Concurrency |        Mean | Error | Rank |  Mean speed | Median speed |   Min speed |   Max speed |
+|-------------------------- |------------ |------------:|------:|-----:|------------ |------------- |------------ |------------ |
+|  PremiumBlockBlobPutBlock |           1 |    478.8 ms |    NA |    1 | 2.2424 GBps |  2.2424 GBps | 2.2424 GBps | 2.2424 GBps |
+|     AdlsBlockBlobPutBlock |           1 |    554.0 ms |    NA |    2 | 1.9380 GBps |  1.9380 GBps | 1.9380 GBps | 1.9380 GBps |
+| StandardBlockBlobPutBlock |           1 |  1,149.8 ms |    NA |    3 | 0.9338 GBps |  0.9338 GBps | 0.9338 GBps | 0.9338 GBps |
+|    PremiumBlockBlobUpload |          54 |  2,500.1 ms |    NA |    4 | 0.4295 GBps |  0.4295 GBps | 0.4295 GBps | 0.4295 GBps |
+|    PremiumBlockBlobUpload |          11 |  2,576.8 ms |    NA |    5 | 0.4167 GBps |  0.4167 GBps | 0.4167 GBps | 0.4167 GBps |
+|       AdlsBlockBlobUpload |          54 |  2,924.8 ms |    NA |    6 | 0.3671 GBps |  0.3671 GBps | 0.3671 GBps | 0.3671 GBps |
+|       AdlsBlockBlobUpload |          11 |  3,693.3 ms |    NA |    7 | 0.2907 GBps |  0.2907 GBps | 0.2907 GBps | 0.2907 GBps |
+|   StandardBlockBlobUpload |          54 |  8,529.4 ms |    NA |    8 | 0.1259 GBps |  0.1259 GBps | 0.1259 GBps | 0.1259 GBps |
+|   StandardBlockBlobUpload |          11 |  8,587.1 ms |    NA |    8 | 0.1250 GBps |  0.1250 GBps | 0.1250 GBps | 0.1250 GBps |
+|    PremiumBlockBlobUpload |           1 | 17,335.2 ms |    NA |    9 | 0.0619 GBps |  0.0619 GBps | 0.0619 GBps | 0.0619 GBps |
+|       AdlsBlockBlobUpload |           1 | 21,475.0 ms |    NA |   10 | 0.0500 GBps |  0.0500 GBps | 0.0500 GBps | 0.0500 GBps |
+|     PremiumPageBlobUpload |           1 | 23,787.8 ms |    NA |   11 | 0.0451 GBps |  0.0451 GBps | 0.0451 GBps | 0.0451 GBps |
+|   StandardBlockBlobUpload |           1 | 24,282.3 ms |    NA |   12 | 0.0442 GBps |  0.0442 GBps | 0.0442 GBps | 0.0442 GBps |
+|     PremiumPageBlobUpload |          54 | 28,484.4 ms |    NA |   13 | 0.0377 GBps |  0.0377 GBps | 0.0377 GBps | 0.0377 GBps |
+|     PremiumPageBlobUpload |          11 | 30,414.6 ms |    NA |   14 | 0.0353 GBps |  0.0353 GBps | 0.0353 GBps | 0.0353 GBps |
