@@ -35,7 +35,7 @@ Intel Xeon CPU E5-2673 v3 2.40GHz, 2 CPU, 20 logical and 20 physical cores
 LaunchCount=2  RunStrategy=Monitoring  WarmupCount=1  
 
 ```
-|                    Method | Concurrency  |        Mean | Rank |  Mean speed | Median speed |   Min speed |   Max speed |
+|                    Method | Concurrency  |        Mean | Rank |  Mean speed | Median speed |   Max speed |   Min speed |
 |-------------------------- |------------- |------------:|-----:|------------ |------------- |------------ |------------ |
 |  PremiumBlockBlobPutBlock | Max (to 128) |    481.9 ms |    1 | 2.2280 GBps |  2.2412 GBps | 2.3826 GBps | 2.0765 GBps |
 | StandardBlockBlobPutBlock | Max (to 128) |    699.2 ms |    2 | 1.5358 GBps |  1.6166 GBps | 1.9539 GBps | 0.7487 GBps |
