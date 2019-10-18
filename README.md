@@ -18,6 +18,10 @@ SMB machine:
 		157 MB/sec each
 		2,300 IOPS each
 
+# Run the test
+
+Replace tokens with connections data in Program.cs, install dotnet-sdk, copy the files to the VM and run `sudo dotnet run -c Release`.
+
 # Results
 
 |                    Method | concurrency |        Mean |       Error |      StdDev |         Max |         Min | Rank |
